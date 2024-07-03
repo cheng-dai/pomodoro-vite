@@ -18,9 +18,8 @@ function App() {
     } else if (timeLeft === 0) {
       audio.play();
       setIsRunning(false);
-      setTimeLeft(1 * 10);
-      setTotalTime((totalTime) => totalTime + 25);
-      window.localStorage.s
+      setTotalTime((totalTime) => totalTime + 30);
+      window.localStorage.s;
     }
     return () => clearInterval(interval);
   }, [isRunning, timeLeft]);
@@ -29,6 +28,9 @@ function App() {
       <Display timeLeft={timeLeft} />
       <Button
         onClick={() => {
+          if (timeLeft === 0) {
+            setTimeLeft(30 * 60);
+          }
           setIsRunning(!isRunning);
         }}
         text={isRunning ? "stop" : "start"}
